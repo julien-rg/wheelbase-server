@@ -29,3 +29,8 @@ jobs:
         run: mvn clean verify
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+      - name: Upload test report to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: target/site/jacoco/jacoco.xml
