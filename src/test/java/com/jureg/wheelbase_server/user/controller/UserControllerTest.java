@@ -32,7 +32,7 @@ import com.jureg.wheelbase_server.user.model.User;
 import com.jureg.wheelbase_server.user.repository.UserRepository;
 
 
-@SpringBootTest
+@SpringBootTest(properties = {"jwt.secret=mysupersecretkeymysupersecretkey123456"})
 @Testcontainers
 @AutoConfigureMockMvc(addFilters = true)
 class UserControllerTest {
