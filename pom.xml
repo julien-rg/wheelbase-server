@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.jureg</groupId>
 	<artifactId>wheelbase-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>wheelbase-server</name>
 	<description>WheelBase Spring Boot API</description>
 	<url/>
