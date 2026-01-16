@@ -41,7 +41,9 @@ public class SecurityConfig {
 	                "/api/users",
 	                "/api/users/{id}",
 	                "/api/users/{id}/followers",
-	                "/api/users/{id}/following"
+	                "/api/users/{id}/following",
+		            "/swagger-ui/**",
+	                "/v3/api-docs/**"
 	            ).permitAll()
 
 	            // Public end points – PUT
