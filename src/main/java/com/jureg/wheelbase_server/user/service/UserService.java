@@ -141,7 +141,7 @@ public class UserService {
 		}
 		// Generate a JWT
 		String jwt = jwtService.generateToken(user);
-		return new UserAuthResponseDto(jwt, userMapper.toSummaryDto(user));
+		return new UserAuthResponseDto(jwt, userMapper.toResponseDto(user));
 	}
 	
 	// -------------------------------------------------------------

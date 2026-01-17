@@ -374,7 +374,9 @@ class UserServiceTest {
 		when(userRepository.findByUsernameIgnoreCaseOrEmailIgnoreCase(dto.usernameOrEmail(), dto.usernameOrEmail())).thenReturn(Optional.of(currentUser));
 		when(passwordEncoder.matches(dto.password(), currentUser.getPassword())).thenReturn(true);
 		when(jwtService.generateToken(currentUser)).thenReturn("jwt-token");
-		when(userMapper.toSummaryDto(currentUser)).thenReturn(new UserSummaryDto(currentUserId, currentUser.getUsername(), currentUser.getAvatarUrl(), AccountType.FOLLOWERS_ONLY));
+		when(userMapper.toResponseDto(currentUser)).thenReturn(
+			new UserResponseDto(currentUserId, currentUser.getUsername(), currentUser.getEmail(), currentUser.getAvatarUrl(), currentUser.getBio(), AccountType.FOLLOWERS_ONLY, Set.of(CommunityType.CAR))
+		);
 		
 		// Make sure the authUser function works correctly
 		UserAuthResponseDto response = userService.authUser(dto);

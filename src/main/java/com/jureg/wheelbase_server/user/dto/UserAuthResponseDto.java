@@ -4,7 +4,7 @@ public record UserAuthResponseDto(
 		
 		String jwt,
 		
-		UserSummaryDto user
+		UserResponseDto user
 		
 ) {
 
