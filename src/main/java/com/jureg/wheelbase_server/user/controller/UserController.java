@@ -3,6 +3,7 @@ package com.jureg.wheelbase_server.user.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +55,15 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<UserAuthResponseDto> login(@Valid @RequestBody UserAuthDto dto) {
 		UserAuthResponseDto user = userService.authUser(dto);
-		return ResponseEntity.ok(user);
+		// Generate cookie for JWT
+		ResponseCookie cookie = ResponseCookie.from("jwt", user.jwt())
+			.httpOnly(true)
+			.secure(true)
+			.path("/")
+			.maxAge(24 * 60 * 60)	// 24 hours expiration
+			.sameSite("Strict")
+			.build();
+		return ResponseEntity.ok().header("Set-Cookie", cookie.toString()).body(user);
 	}
 	
 	// -------------------------------------------------------------
